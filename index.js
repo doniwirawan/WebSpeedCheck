@@ -2,8 +2,6 @@ import puppeteer from "puppeteer"
 import lighthouse from "lighthouse"
 import { URL } from "url"
 import { program } from "commander"
-import chalk from "chalk"
-import figlet from "figlet"
 import figletHelper from "./helper/figletHelper.js"
 
 program
