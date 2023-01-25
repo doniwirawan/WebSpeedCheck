@@ -4,6 +4,7 @@ import { URL } from "url"
 import { program } from "commander"
 import chalk from "chalk"
 import figlet from "figlet"
+import figletHelper from "./helper/figletHelper.js"
 
 program
     .version("1.0.0")
@@ -42,130 +43,37 @@ async function runPageSpeed(url) {
 
     // Collect additional metrics
     const metrics = await page.metrics()
-    console.log(`Layout duration: ${metrics.LayoutDuration} ms`)
-    console.log(`Script duration: ${metrics.ScriptDuration} ms`)
-    console.log(`Task duration: ${metrics.TaskDuration} ms`)
+
+    figletHelper(`Layout duration:\n ${metrics.LayoutDuration} ms`)
+
+    figletHelper(`Script duration:\n ${metrics.ScriptDuration} ms`)
+
+    figletHelper(`Task duration:\n ${metrics.TaskDuration} ms`)
+
+
 
     if (performanceScore >= 90) {
-        figlet.text(`Performance Score: ${performanceScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.green(data))
-        })
+        figletHelper(`Performance Score:\n ${performanceScore} % `, 'green')
     } else if (performanceScore >= 80) {
-        figlet.text(`Performance Score: ${performanceScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.yellow(data))
-        })
+        figletHelper(`Performance Score:\n ${performanceScore} % `, 'yellow')
     } else {
-        figlet.text(`Performance Score: ${performanceScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.red(data))
-        })
+        figletHelper(`Performance Score:\n ${performanceScore} % `, 'red')
     }
 
     if (bestPracticesScore >= 90) {
-        figlet.text(`Best Practices Score: ${bestPracticesScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.green(data))
-        })
+        figletHelper(`Best practices Score:\n ${bestPracticesScore} % `, 'green')
     } else if (bestPracticesScore >= 80) {
-        figlet.text(`Best Practices Score: ${bestPracticesScore} %`, {
-            font: "Doom",
-            horizontal,
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.yellow(data))
-        })
+        figletHelper(`Best practices Score:\n ${bestPracticesScore} % `, 'yellow')
     } else {
-        figlet.text(`Best Practices Score: ${bestPracticesScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.red(data))
-        })
+        figletHelper(`Best practices Score:\n ${bestPracticesScore} % `, 'red')
     }
 
     if (seoScore >= 90) {
-        figlet.text(`SEO Score: ${seoScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.green(data))
-        })
+        figletHelper(`SEO practices Score:\n ${seoScore} % `, 'green')
     } else if (seoScore >= 80) {
-        figlet.text(`SEO Score: ${seoScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.yellow(data))
-        })
+        figletHelper(`SEO practices Score:\n ${seoScore} % `, 'yellow')
     } else {
-        figlet.text(`SEO Score: ${seoScore} %`, {
-            font: "Doom",
-            horizontalLayout: "default",
-            verticalLayout: "default",
-        }, (err, data) => {
-            if (err) {
-                console.log("Something went wrong...")
-                console.dir(err)
-                return
-            }
-            console.log(chalk.red(data))
-        })
+        figletHelper(`SEO practices Score:\n ${seoScore} % `, 'red')
     }
 
     await browser.close()
