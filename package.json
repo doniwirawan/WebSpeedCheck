@@ -2,20 +2,27 @@
   "name": "@doniwirawan/WebSpeedCheckOnTerminal",
   "version": "1.0.0",
   "description": "test your website performance from terminal",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
-    "lint": "eslint . --fix"
+    "start": "node server.js",
+    "lint": "eslint . --fix",
+    "dev":"nodemon server"
   },
-  "keywords": ["web performance","lighthouse"],
+  "git-repository": "https://github.com/doniwirawan/WebSpeedCheckOnTerminal",
+  "keywords": [
+    "web performance",
+    "lighthouse"
+  ],
   "author": "doniwirawan",
   "type": "module",
   "license": "ISC",
   "dependencies": {
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
+    "express": "^4.18.2",
     "figlet": "^1.5.2",
     "lighthouse": "^9.6.8",
+    "mongoose": "^6.8.4",
     "puppeteer": "^19.6.0"
   },
   "husky": {
