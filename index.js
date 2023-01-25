@@ -173,3 +173,5 @@ async function runPageSpeed(url) {
 
 // Example usage
 runPageSpeed(program._optionValues.url)
+
+export default runPageSpeed
