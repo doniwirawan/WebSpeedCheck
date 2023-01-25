@@ -1,14 +1,14 @@
 {
   "name": "WebSpeedCheckOnTerminal",
   "version": "1.0.0",
-  "description": "",
+  "description": "test your website performance from terminal",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "lint": "eslint . --fix"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["web performance","lighthouse"],
+  "author": "doniwirawan",
   "type": "module",
   "license": "ISC",
   "dependencies": {
