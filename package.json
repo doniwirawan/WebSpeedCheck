@@ -1,5 +1,5 @@
 {
-  "name": "WebSpeedCheckOnTerminal",
+  "name": "@doniwirawan/WebSpeedCheckOnTerminal",
   "version": "1.0.0",
   "description": "test your website performance from terminal",
   "main": "index.js",
