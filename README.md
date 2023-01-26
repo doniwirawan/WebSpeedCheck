@@ -1,6 +1,6 @@
 # WebSpeedCheck
 
-check your webspeed (utilizing puppeeter and lighthouse) i need your help to make this project better (but idk why lol)
+check your webspeed (utilizing puppeeter and lighthouse) i need your help to make this project better (but idk how lol)
 
 ## Test the REST API
 
