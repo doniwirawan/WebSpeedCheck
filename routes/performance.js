@@ -23,6 +23,7 @@ router.get("/", async (req, res) => {
             script_duration: result.scriptDuration,
             task_duration: result.taskDuration,
             performance_score: result.performanceScore,
+            accesibility_score: result.accesibilityScore,
             best_practice_score: result.bestPracticesScore,
             seo_score: result.seoScore,
         }

@@ -2,7 +2,7 @@ import puppeteer from "puppeteer"
 import lighthouse from "lighthouse"
 import { URL } from "url"
 
-async function runPageSpeed (url) {
+async function runPageSpeed(url) {
   try {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
@@ -23,6 +23,7 @@ async function runPageSpeed (url) {
 
     // Extract the scores
     const performanceScore = lhr.categories.performance.score * 100
+    const accesibilityScore = lhr.categories.accessibility.score * 100
     const bestPracticesScore = lhr.categories["best-practices"].score * 100
     const seoScore = lhr.categories.seo.score * 100
 
@@ -36,6 +37,7 @@ async function runPageSpeed (url) {
       scriptDuration: metrics.ScriptDuration,
       taskDuration: metrics.TaskDuration,
       performanceScore,
+      accesibilityScore,
       bestPracticesScore,
       seoScore,
       loadTime,
