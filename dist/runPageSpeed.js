@@ -2,14 +2,20 @@ import puppeteer from "puppeteer"
 import lighthouse from "lighthouse"
 import { URL } from "url"
 
-async function runPageSpeed(url) {
+async function runPageSpeed(url, device = "mobile") {
   try {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
-    // Set the viewport to emulate a desktop device
-    await page.setViewport({ width: 1920, height: 1080 })
-    await page.goto(url)
+    if (device == 'mobile') {
+      // Set the viewport to emulate a desktop device
+      await page.setViewport({ width: 360, height: 640 })
+      await page.goto(url)
+    } else {
+      // Set the viewport to emulate a mobile device
+      await page.setViewport({ width: 1920, height: 1080 })
+      await page.goto(url)
+    }
 
     // Collect performance metrics
     const performance = await page.evaluate(() => JSON.parse(JSON.stringify(window.performance)))
