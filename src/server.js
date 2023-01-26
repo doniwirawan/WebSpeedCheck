@@ -1,28 +1,15 @@
 import express from "express"
 import mongoose from "mongoose"
 import runPageSpeed from "../dist/runPageSpeed.js"
+import connectDB from "../db/config.js"
+import Performance from "../model/performance.js"
 
 const app = express()
 
 // Connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/web-performance", { useNewUrlParser: true })
+connectDB()
 
-// Create a Mongoose schema for the performance data
-const PerformanceSchema = new mongoose.Schema({
-  url: String,
-  load_time: Number,
-  layout_duration: Number,
-  script_duration: Number,
-  task_duration: Number,
-  performance_score: Number,
-  best_practice_score: Number,
-  seo_score: Number,
-  created_at: { type: Date, default: Date.now },
-})
-
-// Create a Mongoose model for the performance data
-const Performance = mongoose.model("Performance", PerformanceSchema)
-
+// Create a route to test the performance of a URL
 app.get("/performance", async (req, res) => {
   const { url } = req.query
 
