@@ -1,2 +1,2 @@
-# WebSpeedCheckOnTerminal
-check your webspeed only using terminal (utilize puppeeter and lighthouse)
+# WebSpeedCheck
+check your webspeed (utilizing puppeeter and lighthouse)
