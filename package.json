@@ -2,11 +2,11 @@
   "name": "@doniwirawan/WebSpeedCheckOnTerminal",
   "version": "1.0.0",
   "description": "test your website performance from terminal",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "lint": "eslint . --fix",
-    "dev":"nodemon server"
+    "dev":"nodemon src/server"
   },
   "git-repository": "https://github.com/doniwirawan/WebSpeedCheckOnTerminal",
   "keywords": [

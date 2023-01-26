@@ -1,6 +1,6 @@
 import express from "express"
 import mongoose from "mongoose"
-import runPageSpeed from "./helper/runPageSpeed.js"
+import runPageSpeed from "../dist/runPageSpeed.js"
 
 const app = express()
 
