@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node src/server.js",
     "lint": "eslint . --fix",
-    "dev":"nodemon src/server"
+    "dev": "nodemon src/server"
   },
   "git-repository": "https://github.com/doniwirawan/WebSpeedCheckOnTerminal",
   "keywords": [
@@ -19,6 +19,7 @@
   "dependencies": {
     "chalk": "^5.2.0",
     "commander": "^10.0.0",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "figlet": "^1.5.2",
     "lighthouse": "^9.6.8",
