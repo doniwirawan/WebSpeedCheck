@@ -20,12 +20,20 @@ async function runPageSpeed(url, device = "mobile") {
     // Collect performance metrics
     const performance = await page.evaluate(() => JSON.parse(JSON.stringify(window.performance)))
 
+    // Collect performance entries using the performance.getEntries() method
+    const performanceEntries = await page.evaluate(() => JSON.stringify(performance.getEntries()));
+
     // Use Lighthouse to audit the page
     const { lhr } = await lighthouse(url, {
       port: (new URL(browser.wsEndpoint())).port,
       output: "json",
       logLevel: "info",
     })
+
+    // Collect performance metrics using the DevTools protocol
+    const client = await page.target().createCDPSession();
+    await client.send('Performance.enable');
+
 
     // Extract the scores
     const performanceScore = lhr.categories.performance.score * 100
@@ -34,6 +42,8 @@ async function runPageSpeed(url, device = "mobile") {
     const seoScore = lhr.categories.seo.score * 100
 
     const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart
+
+    const ttfb = performance.timing.responseEnd - performance.timing.navigationStart;
 
     // Collect additional metrics
     const metrics = await page.metrics()
@@ -47,6 +57,8 @@ async function runPageSpeed(url, device = "mobile") {
       bestPracticesScore,
       seoScore,
       loadTime,
+      ttfb,
+      performanceEntries,
     }
 
     await browser.close()

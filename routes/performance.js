@@ -31,6 +31,8 @@ router.get("/", async (req, res) => {
             accesibility_score: result.accesibilityScore,
             best_practice_score: result.bestPracticesScore,
             seo_score: result.seoScore,
+            ttfb: result.ttfb,
+
         }
         const performanceData = new Performance(data)
 

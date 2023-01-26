@@ -11,6 +11,8 @@ const PerformanceSchema = new mongoose.Schema({
     accesibility_score: Number,
     best_practice_score: Number,
     seo_score: Number,
+    ttfb: Number,
+    performanceEntries: { type: mongoose.SchemaTypes.Mixed },
     created_at: { type: Date, default: Date.now },
 })
 
