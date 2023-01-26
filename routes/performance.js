@@ -10,7 +10,12 @@ router.get("/", async (req, res) => {
 
     try {
         if (!url) {
-            return res.status(400).send({ error: "You must provide a URL to test" })
+            try {
+                const data = await Performance.find({}).sort({ created_at: -1 }).limit(1)
+                return await res.status(200).send(data)
+            } catch (error) {
+                return res.status(500).send({ error: error.message })
+            }
         }
 
         const result = await runPageSpeed(url)
