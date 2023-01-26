@@ -7,7 +7,7 @@ const app = express()
 // Connect to MongoDB
 connectDB()
 
-app.use('/performance', performanceRoute)
+app.use("/performance", performanceRoute)
 
 const port = process.env.PORT || 5000
 
