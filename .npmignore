@@ -13,5 +13,4 @@ node_modules/eslint-plugin-jsx-a11y
 node_modules/eslint-plugin-react
 node_modules/husky
 node_modules/lint-staged
-node_modules/webpack
-node_modules/webpack-cli
+
