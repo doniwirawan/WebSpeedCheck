@@ -2,12 +2,12 @@ import puppeteer from "puppeteer"
 import lighthouse from "lighthouse"
 import { URL } from "url"
 
-async function runPageSpeed(url, device = "mobile") {
+async function runPageSpeed (url, device = "mobile") {
   try {
     const browser = await puppeteer.launch()
     const page = await browser.newPage()
 
-    if (device == 'mobile') {
+    if (device == "mobile") {
       // Set the viewport to emulate a desktop device
       await page.setViewport({ width: 360, height: 640 })
       await page.goto(url)
@@ -21,7 +21,7 @@ async function runPageSpeed(url, device = "mobile") {
     const performance = await page.evaluate(() => JSON.parse(JSON.stringify(window.performance)))
 
     // Collect performance entries using the performance.getEntries() method
-    const performanceEntries = await page.evaluate(() => JSON.stringify(performance.getEntries()));
+    const performanceEntries = await page.evaluate(() => JSON.stringify(performance.getEntries()))
 
     // Use Lighthouse to audit the page
     const { lhr } = await lighthouse(url, {
@@ -31,9 +31,8 @@ async function runPageSpeed(url, device = "mobile") {
     })
 
     // Collect performance metrics using the DevTools protocol
-    const client = await page.target().createCDPSession();
-    await client.send('Performance.enable');
-
+    const client = await page.target().createCDPSession()
+    await client.send("Performance.enable")
 
     // Extract the scores
     const performanceScore = lhr.categories.performance.score * 100
@@ -43,7 +42,7 @@ async function runPageSpeed(url, device = "mobile") {
 
     const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart
 
-    const ttfb = performance.timing.responseEnd - performance.timing.navigationStart;
+    const ttfb = performance.timing.responseEnd - performance.timing.navigationStart
 
     // Collect additional metrics
     const metrics = await page.metrics()
